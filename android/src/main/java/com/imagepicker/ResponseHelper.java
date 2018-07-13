@@ -73,6 +73,11 @@ public class ResponseHelper
 
     public void invokeResponse(@NonNull final Callback callback)
     {
-        callback.invoke(response);
+        try {
+            callback.invoke(response);
+        }catch (Exception e) {
+            cleanResponse();
+            response.putBoolean("didCancel", true);
+        }
     }
 }
