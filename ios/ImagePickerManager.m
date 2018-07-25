@@ -195,7 +195,7 @@ RCT_EXPORT_METHOD(showImagePicker:(NSDictionary *)options callback:(RCTResponseS
     if (target == RNImagePickerTargetCamera) {
         [self checkCameraPermissions:^(BOOL granted) {
             if (!granted) {
-                self.callback(@[@{@"error": @"Camera permissions not granted"}]);
+                self.callback(@[@{@"error": @"CameraPermissionsNotGrantedException"}]);
                 return;
             }
 
@@ -205,7 +205,7 @@ RCT_EXPORT_METHOD(showImagePicker:(NSDictionary *)options callback:(RCTResponseS
     else { // RNImagePickerTargetLibrarySingleImage
         [self checkPhotosPermissions:^(BOOL granted) {
             if (!granted) {
-                self.callback(@[@{@"error": @"Photo library permissions not granted"}]);
+                self.callback(@[@{@"error": @"PhotoPermissionsNotGrantedException"}]);
                 return;
             }
 
